@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EU Data Act & Automotive Retail Technology</title>
+  <meta name="description" content="A simple landing page about the implications of the EU Data Act for the automotive sector and dealership technology stacks." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #11172a;
+      --card: rgba(255,255,255,0.06);
+      --card-border: rgba(255,255,255,0.12);
+      --text: #f5f7fb;
+      --muted: #b6bfd3;
+      --accent: #7cc7ff;
+      --accent-2: #9af0cf;
+      --max: 1180px;
+      --shadow: 0 24px 60px rgba(0,0,0,0.28);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(124,199,255,0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(154,240,207,0.12), transparent 22%),
+        linear-gradient(180deg, #0b1020 0%, #0d1324 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(11, 16, 32, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 72px 0 34px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border: 1px solid rgba(124,199,255,0.24);
+      background: rgba(124,199,255,0.1);
+      color: #d7eeff;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2.2rem, 5vw, 4.6rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 62ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-1px);
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, var(--accent), #9fb6ff);
+      color: #06101d;
+      box-shadow: var(--shadow);
+    }
+
+    .button-secondary {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.14);
+      color: var(--text);
+    }
+
+    .hero-card,
+    .content-card,
+    .pdf-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-media {
+      overflow: hidden;
+      padding: 12px;
+    }
+
+    .hero-media video {
+      width: 100%;
+      display: block;
+      border-radius: 18px;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      background: #050814;
+    }
+
+    .hero-media-note {
+      padding: 12px 4px 2px;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      letter-spacing: -0.03em;
+    }
+
+    .section-header p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 68ch;
+    }
+
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .content-card {
+      padding: 22px;
+    }
+
+    .content-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.08rem;
+    }
+
+    .content-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .pdf-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .pdf-card {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 230px;
+    }
+
+    .pdf-tag {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(154,240,207,0.12);
+      color: #d8fff0;
+      border: 1px solid rgba(154,240,207,0.18);
+      font-size: 0.82rem;
+      margin-bottom: 14px;
+    }
+
+    .pdf-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+    }
+
+    .pdf-card p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      flex-grow: 1;
+    }
+
+    .pdf-meta {
+      margin: 0 0 18px;
+      color: #dce4f5;
+      font-size: 0.92rem;
+    }
+
+    .pdf-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.05);
+      font-weight: 600;
+    }
+
+    .pdf-link:hover,
+    .pdf-link:focus-visible {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.22);
+    }
+
+    .footer {
+      padding: 42px 0 60px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .insights-grid,
+      .pdf-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero {
+        padding-top: 44px;
+      }
+
+      h1 {
+        font-size: 2.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#top" class="brand">EU Data Act / Automotive Retail</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#overview">Overview</a>
+        <a href="#presentations">Presentations</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Automotive • Data Access • Dealer Technology Stack</div>
+          <h1>The EU Data Act is reshaping how dealership technology works.</h1>
+          <p>
+            From CRM to DMS, aftersales tools and customer-facing digital services,
+            the Data Act is changing expectations around access, portability and interoperability of dealership-generated data across the automotive retail ecosystem.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#presentations">Explore presentations</a>
+            <a class="button button-secondary" href="#overview">Read the overview</a>
+          </div>
+        </div>
+
+        <div class="hero-card hero-media">
+          <video controls playsinline poster="assets/hero-poster.jpg">
+            <source src="assets/hero-video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="hero-media-note">
+            Replace <strong>assets/hero-video.mp4</strong> with your uploaded hero video. You can also update the optional poster image.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="overview">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Why this matters for dealerships</h2>
+          </div>
+          <p>
+            The dealership stack is no longer just about websites, DMS, IMS, CRM, voice agents and marketing automation. It increasingly depends on connected
+            service events, remote diagnostics, consent flows and integrations between OEM systems and third-party platforms.
+          </p>
+        </div>
+
+        <div class="insights-grid">
+          <article class="content-card">
+            <h3>1. Data access becomes strategic</h3>
+            <p>
+              Dealers and their technology partners need to think beyond traditional lead and transaction data. The ability to consume and operationalise
+              vehicle-generated data can affect aftersales, maintenance offers, fleet services, subscriptions and customer retention.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <h3>2. Integration architecture gets more important</h3>
+            <p>
+              Middleware, APIs, consent records, identity layers and governance workflows become critical. The question is not only who sees the data,
+              but how data moves across DMS, CRM, analytics, service scheduling and customer applications.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <h3>3. Compliance and product design converge</h3>
+            <p>
+              Product teams serving dealerships need to design for transparency, secure access and role-based data sharing. Legal interpretation, user permissions
+              and technical implementation increasingly need to be built together from day one.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="presentations">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Presentations</h2>
+          </div>
+          <p>
+            Download the presentation materials below. Replace these sample files with your own PDFs once you upload them.
+          </p>
+        </div>
+
+        <div class="pdf-grid">
+          <article class="pdf-card">
+            <span class="pdf-tag">PDF Download</span>
+            <h3>EU Data Act: Executive Overview for Automotive Retail</h3>
+            <p>
+              A concise introduction to the main concepts, timelines and implications for dealers, OEMs and automotive software providers.
+            </p>
+            <div class="pdf-meta">File: <strong>pdfs/eu-data-act-overview.pdf</strong></div>
+            <a class="pdf-link" href="pdfs/eu-data-act-overview.pdf" download>Download PDF</a>
+          </article>
+
+          <article class="pdf-card">
+            <span class="pdf-tag">PDF Download</span>
+            <h3>Dealership Technology Stack Under the Data Act</h3>
+            <p>
+              An architecture-focused presentation covering DMS, CRM, service tools, connected-car integrations and governance considerations.
+            </p>
+            <div class="pdf-meta">File: <strong>pdfs/dealership-tech-stack.pdf</strong></div>
+            <a class="pdf-link" href="pdfs/dealership-tech-stack.pdf" download>Download PDF</a>
+          </article>
+
+          <article class="pdf-card">
+            <span class="pdf-tag">PDF Download</span>
+            <h3>Operational Priorities for Dealers and Vendor Partners</h3>
+            <p>
+              A practical deck focused on customer consent, data pipelines, vendor responsibilities and rollout priorities across the retail network.
+            </p>
+            <div class="pdf-meta">File: <strong>pdfs/operational-priorities.pdf</strong></div>
+            <a class="pdf-link" href="pdfs/operational-priorities.pdf" download>Download PDF</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      This page is a simple landing page template. Upload your video to <strong>assets/hero-video.mp4</strong> and your presentations to the <strong>pdfs/</strong> folder, then update the file names if needed.
+    </div>
+  </footer>
+</body>
+</html>
